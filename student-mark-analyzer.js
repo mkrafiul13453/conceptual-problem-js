@@ -1,32 +1,34 @@
-function analyzeMarks(marksObj){
+function analyzeMarks(marksObj) {
+    let total = 0;
+    let highest = null;
+    let lowest = null;
+    let highSubject = "";
+    let lowSubject = "";
+    let count = 0;
 
-    let total=0;
-    let highestMark=-Infinity;
-    let lowestMark=Infinity;
-    let higherSubject=null;
-    let lowerSubject=null;
+    for (let subject in marksObj) {
+        let mark = marksObj[subject];
+        total += mark;
+        count++;
 
-
-    for (let subject in marksObj){
-        let marks=marksObj[subject];
-        if(marks>highestMark){
-            highestMark=marks;
-            higherSubject=subject;
+        if (highest===null || mark > highest) {
+            highest = mark;
+            highSubject = subject;
         }
-        if(marks<lowestMark){
-           lowestMark=marks;
-           lowerSubject=subject;
+
+        if (lowest === null || mark < lowest) {
+            lowest = mark;
+            lowSubject = subject;
         }
-        total=total+marks;
     }
-    let average=total/Object.keys(marksObj).length;
 
-    return{
-        total:total,
-        average:average,
-        highest:higherSubject,
-        lowest:lowerSubject,
+    let average = total / count;
 
+    return {
+        total: total,
+        average: average,
+        highest: highSubject,
+        lowest: lowSubject
     };
 }
 

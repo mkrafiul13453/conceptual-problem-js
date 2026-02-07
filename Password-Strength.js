@@ -14,6 +14,9 @@ function checkPassword(password){
             hasUpperCase=true;
         }
     }
+    if(length<8){
+        reasons.push("Password length must be 8.")
+    }
 
     if(hasUpperCase===false){
         reasons.push("Missing upper case.");
@@ -40,5 +43,5 @@ function checkPassword(password){
 
 }
 
-const outPut=checkPassword( "Hello123");
+const outPut=checkPassword( "He123");
 console.log(outPut);
